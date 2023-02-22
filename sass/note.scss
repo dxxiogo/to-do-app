@@ -1,8 +1,9 @@
 #added-tasks{
-    min-height: 100px;
+    min-height: 200px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 10px;
     .new-note{
         header{
             display: flex;
@@ -25,18 +26,17 @@
                 padding-top: 5px;
                 width: 300px;                    
                 div{
-                    display: none;
                     img{
-                        height: 20px;
+                        height: 15px;
                         cursor: pointer;
                     }
                     img:hover{
-                        height: 15px;
+                        height: 10px;
                     }
                 }
                 .label-note{
                     img{
-                        height: 15px;
+                        height: 10px;
                     }
                     img:hover{
                         height: 10px;

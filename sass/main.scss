@@ -47,7 +47,7 @@ main{
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                #all-notes, .new-note{
+                #all-notes{
                     width: 95px;
                     height: 30px;
                     display: flex;
@@ -56,8 +56,31 @@ main{
                     border-radius: 15px;
                     border: 1.5px solid $label-color;
                     cursor: pointer;
+                    background-color: $major-color;
+                    color: #fff;
                 }
                 #plus{
+                    #new-label{
+                        display: none;
+                        #new-label-input{
+                            border: 1.5px solid $label-color;
+                            outline: none;
+                            height: 30px;
+                            padding: 8px;
+                            border-radius: 15px;
+                            width: 120px;
+                            font-size: 16px;
+                        }
+                        button{
+                            height: 30px;
+                            width: 50px;
+                            color: $label-color;
+                            border: none;
+                            background: none;
+                            cursor: pointer;
+                            font-size: 16px;
+                        }
+                    }
                     img{
                         height: 30px;
                         cursor: pointer;

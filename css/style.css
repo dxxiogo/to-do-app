@@ -49,7 +49,7 @@ main #form-task #labels-area div {
   align-items: center;
   gap: 8px;
 }
-main #form-task #labels-area div #all-notes, main #form-task #labels-area div .new-note {
+main #form-task #labels-area div #all-notes {
   width: 95px;
   height: 30px;
   display: flex;
@@ -58,6 +58,29 @@ main #form-task #labels-area div #all-notes, main #form-task #labels-area div .n
   border-radius: 15px;
   border: 1.5px solid #bdbdbd;
   cursor: pointer;
+  background-color: #9c27b0;
+  color: #fff;
+}
+main #form-task #labels-area div #plus #new-label {
+  display: none;
+}
+main #form-task #labels-area div #plus #new-label #new-label-input {
+  border: 1.5px solid #bdbdbd;
+  outline: none;
+  height: 30px;
+  padding: 8px;
+  border-radius: 15px;
+  width: 120px;
+  font-size: 16px;
+}
+main #form-task #labels-area div #plus #new-label button {
+  height: 30px;
+  width: 50px;
+  color: #bdbdbd;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 main #form-task #labels-area div #plus img {
   height: 30px;
@@ -68,10 +91,11 @@ main #form-task #labels-area div #plus img:hover {
 }
 
 #added-tasks {
-  min-height: 100px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 10px;
 }
 #added-tasks .new-note header {
   display: flex;
@@ -95,18 +119,15 @@ main #form-task #labels-area div #plus img:hover {
   padding-top: 5px;
   width: 300px;
 }
-#added-tasks .new-note header .icons div {
-  display: none;
-}
 #added-tasks .new-note header .icons div img {
-  height: 20px;
+  height: 15px;
   cursor: pointer;
 }
 #added-tasks .new-note header .icons div img:hover {
-  height: 15px;
+  height: 10px;
 }
 #added-tasks .new-note header .icons .label-note img {
-  height: 15px;
+  height: 10px;
 }
 #added-tasks .new-note header .icons .label-note img:hover {
   height: 10px;
@@ -129,6 +150,10 @@ main #form-task #labels-area div #plus img:hover {
   text-decoration: none;
   box-sizing: border-box;
   font-family: "Ubuntu";
+}
+
+main {
+  min-height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

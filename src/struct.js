@@ -1,4 +1,4 @@
-import { showEditingOptions, hideEditingOptions} from "./task.js";
+import { removeTask } from "./task.js";
 
 function createDiv(className){
     const div = document.createElement('div')
@@ -18,8 +18,6 @@ function createHeader () {
     const newLabel = document.createElement('label');
 
     const icons = createDiv('icons')
-    icons.addEventListener('mouseenter', showEditingOptions);
-    icons.addEventListener('mouseout', hideEditingOptions);
 
     const palleteNote = createDiv('pallete-note edit-option');
     const palleteIcon = createIcon("../icon/palette.png");
@@ -30,7 +28,7 @@ function createHeader () {
     labelNote.append(labelIcon);
 
     const trashNote = createDiv('trash-note edit-option');
-    const trashIcon = createIcon("../icon/trash.png");
+    const trashIcon = createIcon("../icon/trash.png", removeTask);
     trashNote.append(trashIcon);
 
     icons.append(palleteNote, labelNote, trashNote);    
@@ -39,7 +37,8 @@ function createHeader () {
     return newHeader;
 }
 
-export default function createNewNote ({content, select, label}) {
+export default function createNewNote ({content, select, label, reference}) {
+    const main = document.querySelector('main');
     const notesAdded = document.querySelector('#added-tasks');
     const p = document.querySelector('#added-tasks > p');
     if(p){
@@ -47,6 +46,7 @@ export default function createNewNote ({content, select, label}) {
     }
 
     const newNote = createDiv('new-note');
+    newNote.id = reference;
     const newHeader = createHeader();
 
     const contentDiv = createDiv('content');
