@@ -19,19 +19,15 @@ function createHeader () {
 
     const icons = createDiv('icons')
 
-    const palleteNote = createDiv('pallete-note edit-option');
-    const palleteIcon = createIcon("../icon/palette.png");
-    palleteNote.append(palleteIcon);
-
-    const labelNote = createDiv('label-note edit-option');
-    const labelIcon = createIcon("../icon/tag.png");
-    labelNote.append(labelIcon);
+    const labelEdit = createDiv('label-edit edit-option');
+    const labelIcon = createIcon("../icon/pincel.png");
+    labelEdit.append(labelIcon);
 
     const trashNote = createDiv('trash-note edit-option');
     const trashIcon = createIcon("../icon/trash.png", removeTask);
     trashNote.append(trashIcon);
 
-    icons.append(palleteNote, labelNote, trashNote);    
+    icons.append(labelEdit, trashNote);    
     newHeader.append(newLabel, icons);
 
     return newHeader;

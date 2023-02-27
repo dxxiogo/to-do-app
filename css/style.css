@@ -49,10 +49,11 @@ main #form-task #labels-area div {
   align-items: center;
   gap: 8px;
 }
-main #form-task #labels-area div #all-notes {
-  width: 95px;
+main #form-task #labels-area div #all-notes, main #form-task #labels-area div .new-label {
+  min-width: 95px;
   height: 30px;
   display: flex;
+  padding: 5px;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
@@ -60,6 +61,19 @@ main #form-task #labels-area div #all-notes {
   cursor: pointer;
   background-color: #9c27b0;
   color: #fff;
+}
+main #form-task #labels-area div .new-label {
+  background: none;
+  color: #bdbdbd;
+}
+main #form-task #labels-area div #plus button {
+  height: 30px;
+  width: 50px;
+  color: #bdbdbd;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 main #form-task #labels-area div #plus #new-label {
   display: none;
@@ -71,15 +85,6 @@ main #form-task #labels-area div #plus #new-label #new-label-input {
   padding: 8px;
   border-radius: 15px;
   width: 120px;
-  font-size: 16px;
-}
-main #form-task #labels-area div #plus #new-label button {
-  height: 30px;
-  width: 50px;
-  color: #bdbdbd;
-  border: none;
-  background: none;
-  cursor: pointer;
   font-size: 16px;
 }
 main #form-task #labels-area div #plus img {

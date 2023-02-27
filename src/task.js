@@ -24,7 +24,6 @@ function listTasks(){
 
 function removeTask (eve) {
     const currentTask = eve.currentTarget.parentNode.parentNode.parentNode.parentNode;
-    console.log(currentTask);
     localStorage.removeItem(`${currentTask.id}`);
     let addedTasks = JSON.parse(localStorage.getItem('added-tasks'));
     addedTasks = addedTasks.filter((task) => {
@@ -39,28 +38,9 @@ function removeTask (eve) {
     }
     localStorage.setItem('added-tasks', JSON.stringify(addedTasks));
     currentTask.childNodes.forEach(element => element.remove());
-    currentTask.remove()
-    
+    currentTask.remove();
 }
 
-function addNewLabel() {
-    const newLabelInput = document.querySelector('#new-label-input').value;
-    const labelsArea = document.querySelector('#labels-area');
-    const newLabel = document.createElement('div');
-    newLabel.className = 'new-label';
-    const contentLabel = document.createElement('p');
-    contentLabel.textContent = newLabelInput;
-    newLabel.append(contentLabel);
-    labelsArea.append(newLabel);
-    const newLabelDiv = document.querySelector('#new-label');
-    newLabelDiv.style.display = 'none';
-    eve.currentTarget.removeEventListener('click', addNewLabel);
-}
 
-function showInputNewLabel (eve) {
-    const newLabel = document.querySelector('#new-label');
-    newLabel.style.display = 'block'
-    eve.currentTarget.addEventListener('click', addNewLabel);
-}
 
-export {listTasks, removeTask, showInputNewLabel}
+export {listTasks, removeTask}

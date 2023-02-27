@@ -47,10 +47,11 @@ main{
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                #all-notes{
-                    width: 95px;
+                #all-notes, .new-label{
+                    min-width: 95px;
                     height: 30px;
                     display: flex;
+                    padding: 5px;
                     align-items: center;
                     justify-content: center;
                     border-radius: 15px;
@@ -59,7 +60,20 @@ main{
                     background-color: $major-color;
                     color: #fff;
                 }
+                .new-label {
+                    background:none;
+                    color: $label-color;
+                }
                 #plus{
+                    button{
+                        height: 30px;
+                        width: 50px;
+                        color: $label-color;
+                        border: none;
+                        background: none;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
                     #new-label{
                         display: none;
                         #new-label-input{
@@ -69,15 +83,6 @@ main{
                             padding: 8px;
                             border-radius: 15px;
                             width: 120px;
-                            font-size: 16px;
-                        }
-                        button{
-                            height: 30px;
-                            width: 50px;
-                            color: $label-color;
-                            border: none;
-                            background: none;
-                            cursor: pointer;
                             font-size: 16px;
                         }
                     }

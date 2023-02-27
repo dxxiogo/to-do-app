@@ -1,5 +1,4 @@
-export function storeTask (task) {
-    console.log(task);
+function storeTask (task) {
     if(localStorage.getItem(task.reference)){
         const taskAdedd = JSON.parse(localStorage.getItem(`${task.reference}`)) 
     } else {
@@ -17,3 +16,18 @@ export function storeTask (task) {
     }
 }
 
+function createReferenceToStorage (task) {
+    if(localStorage.getItem('amount-tasks')){
+        let amountTasks = Number(JSON.parse(localStorage.getItem('amount-tasks')));
+        amountTasks ++;
+        task.reference = `task-${amountTasks}`;
+        localStorage.setItem('amount-tasks', JSON.stringify(amountTasks));
+    } else {
+        let amountTasks = 1;
+        task.reference = `task-${amountTasks}`;
+        localStorage.setItem('amount-tasks', JSON.stringify(amountTasks));
+    }
+    return task;
+}
+
+export{createReferenceToStorage, storeTask};
