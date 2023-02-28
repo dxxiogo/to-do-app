@@ -1,5 +1,6 @@
 import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
+import {discardEditChanges, selectColor} from "./edit.js"
 import { listTasks} from "./task.js";
 import { addNewLabel, cancelNewLabel, showInputToNewLabel } from "./label.js";
 
@@ -9,7 +10,8 @@ btnAdd.addEventListener('click', () => {
     const task = {
         content: taskInput.value,
         label: '',
-        select: false
+        select: false,
+        color: '#9c27b0'
     }
     
     createNewNote(createReferenceToStorage(task));
@@ -27,3 +29,10 @@ btnNewLabel.addEventListener('click', addNewLabel);
 
 const bntCancelNewLabel = document.querySelector('#new-label > button');
 bntCancelNewLabel.addEventListener('click', cancelNewLabel);
+
+const colors = document.querySelectorAll('.color');
+colors.forEach((color) => color.addEventListener('click', selectColor));
+
+const btnDiscardEditChanges = document.querySelector('#discard-changes-btn');
+
+btnDiscardEditChanges.addEventListener('click', discardEditChanges)

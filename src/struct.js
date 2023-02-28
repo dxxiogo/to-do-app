@@ -1,4 +1,5 @@
-import { removeTask } from "./task.js";
+import { removeTask} from "./task.js";
+import { showResourcesToEditTask } from "./edit.js";
 
 function createDiv(className){
     const div = document.createElement('div')
@@ -13,14 +14,16 @@ function createIcon (src, event){
     return newImg;
 }
 
-function createHeader () {
+function createHeader (color) {
     const newHeader = document.createElement('header');
+    newHeader.style.backgroundColor = color;
     const newLabel = document.createElement('label');
 
     const icons = createDiv('icons')
 
     const labelEdit = createDiv('label-edit edit-option');
     const labelIcon = createIcon("../icon/pincel.png");
+    labelIcon.addEventListener('click', showResourcesToEditTask);
     labelEdit.append(labelIcon);
 
     const trashNote = createDiv('trash-note edit-option');
@@ -33,7 +36,7 @@ function createHeader () {
     return newHeader;
 }
 
-export default function createNewNote ({content, select, label, reference}) {
+export default function createNewNote ({content, select, label, reference, color}) {
     const main = document.querySelector('main');
     const notesAdded = document.querySelector('#added-tasks');
     const p = document.querySelector('#added-tasks > p');
@@ -43,7 +46,7 @@ export default function createNewNote ({content, select, label, reference}) {
 
     const newNote = createDiv('new-note');
     newNote.id = reference;
-    const newHeader = createHeader();
+    const newHeader = createHeader(color);
 
     const contentDiv = createDiv('content');
     const input = document.createElement('input');

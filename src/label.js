@@ -1,3 +1,10 @@
+function addNewOptionToLabels (label) {
+    const labelsOption = document.querySelector('#options');
+    const newOption = document.createElement('option');
+    newOption.value = label;
+    newOption.textContent = label;
+    labelsOption.append(newOption);
+}
 
 
 function createStructForLabel(content) {
@@ -28,6 +35,7 @@ function addNewLabel () {
      const newLabelInput = document.querySelector('#new-label-input');
      const labelsAdded = document.querySelector('#labels');
      const createdNewLabel = createStructForLabel(newLabelInput.value);  
+     addNewOptionToLabels(newLabelInput.value);
      labelsAdded.append(createdNewLabel);
      newLabelInput.value = ''
      hideInputToNewLabel();

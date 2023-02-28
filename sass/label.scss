@@ -1,0 +1,60 @@
+#labels-area{
+    max-width: 470px;
+    min-height: 50px;
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    div{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        #all-notes, .new-label{
+            min-width: 95px;
+            height: 30px;
+            display: flex;
+            padding: 5px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            border: 1.5px solid $label-color;
+            cursor: pointer;
+            background-color: $major-color;
+            color: #fff;
+        }
+        .new-label {
+            background:none;
+            color: $label-color;
+        }
+        #plus{
+            button{
+                height: 30px;
+                width: 50px;
+                color: $label-color;
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            #new-label{
+                display: none;
+                #new-label-input{
+                    border: 1.5px solid $label-color;
+                    outline: none;
+                    height: 30px;
+                    padding: 8px;
+                    border-radius: 15px;
+                    width: 120px;
+                    font-size: 16px;
+                }
+            }
+            img{
+                height: 30px;
+                cursor: pointer;
+            }
+            img:hover{
+                height: 25px;
+            }
+        }
+    }
+}
+

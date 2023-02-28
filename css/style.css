@@ -106,7 +106,6 @@ main #form-task #labels-area div #plus img:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #3f51b5;
   border: 1px solid black;
   height: 40px;
   width: 450px;
@@ -147,6 +146,162 @@ main #form-task #labels-area div #plus img:hover {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: 1px solid black;
+}
+
+#bg-modal-edit {
+  background-color: rgba(0, 0, 0, 0.359);
+  position: fixed;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+#modal-edit-task {
+  background-color: white;
+  border-radius: 20px;
+  height: 160px;
+  width: 450px;
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.364);
+  padding: 30px;
+}
+
+#task-content > input {
+  width: 380px;
+  height: 30px;
+  padding: 0px 6px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  border-bottom: 3px solid #9c27b0;
+}
+
+#options {
+  width: 160px;
+  height: 30px;
+  margin-top: 10px;
+  outline: none;
+  border-radius: 10px;
+}
+
+#resources {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#edit-colors {
+  display: flex;
+  gap: 10px;
+}
+#edit-colors .color {
+  margin-top: 10px;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  border: 0.8px solid black;
+  cursor: pointer;
+}
+#edit-colors .color:hover {
+  border-color: white;
+}
+#edit-colors #pink {
+  background-color: #e91e63;
+}
+#edit-colors #pourple {
+  background-color: #9c27b0;
+}
+#edit-colors #green {
+  background-color: #30ae45;
+}
+#edit-colors #dark-blue {
+  background-color: #3f51b5;
+}
+
+#btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+#btns button {
+  height: 20px;
+  width: 80px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bdbdbd;
+}
+#btns button:hover {
+  color: #838282;
+}
+
+.selected-color {
+  height: 18px !important;
+  width: 18px !important;
+  border: 1px solid black !important;
+}
+
+#labels-area {
+  max-width: 470px;
+  min-height: 50px;
+  display: flex;
+  padding: 5px;
+  flex-wrap: wrap;
+}
+#labels-area div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#labels-area div #all-notes, #labels-area div .new-label {
+  min-width: 95px;
+  height: 30px;
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1.5px solid #bdbdbd;
+  cursor: pointer;
+  background-color: #9c27b0;
+  color: #fff;
+}
+#labels-area div .new-label {
+  background: none;
+  color: #bdbdbd;
+}
+#labels-area div #plus button {
+  height: 30px;
+  width: 50px;
+  color: #bdbdbd;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+#labels-area div #plus #new-label {
+  display: none;
+}
+#labels-area div #plus #new-label #new-label-input {
+  border: 1.5px solid #bdbdbd;
+  outline: none;
+  height: 30px;
+  padding: 8px;
+  border-radius: 15px;
+  width: 120px;
+  font-size: 16px;
+}
+#labels-area div #plus img {
+  height: 30px;
+  cursor: pointer;
+}
+#labels-area div #plus img:hover {
+  height: 25px;
 }
 
 * {

@@ -9,7 +9,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: $note-color-first;
             border: 1px solid black;
             height: 40px;
             width: 450px;
@@ -56,4 +55,102 @@
             border: 1px solid black;
         }
     }
+}
+
+#bg-modal-edit {
+    background-color: rgba(0, 0, 0, 0.359);
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#modal-edit-task {
+    background-color: white;
+    border-radius: 20px;
+    height: 160px;
+    width: 450px;
+    box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.364);
+    padding: 30px;
+}
+
+#task-content > input {
+    width: 380px;
+    height: 30px;
+    padding: 0px 6px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    border-bottom: 3px solid $major-color;
+}
+
+#options{
+    width: 160px;
+    height: 30px;
+    margin-top: 10px;
+    outline: none;
+    border-radius: 10px;
+}
+
+#resources{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#edit-colors{
+    display: flex;
+    gap: 10px;
+    .color{
+        margin-top: 10px;
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        border: 0.8px solid black;
+        cursor: pointer;
+    }   
+    .color:hover{
+        border-color: white;
+    }
+    #pink{
+        background-color: $note-color-third ;
+    }
+    #pourple{
+        background-color: $major-color;
+    }
+    #green{
+        background-color: $note-color-second;
+    }
+    #dark-blue{
+        background-color: $note-color-first ;
+    }
+}
+
+#btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    button{
+        height: 20px;
+        width: 80px;
+        font-size: 18px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $label-color;
+    }
+    button:hover{
+        color: #838282;
+    }
+}
+
+.selected-color{
+    height: 18px !important;
+    width: 18px !important;
+    border: 1px solid black !important;
 }

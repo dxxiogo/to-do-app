@@ -2,7 +2,7 @@
 @import "variables.scss";
 @import "main.scss";
 @import "note.scss";
-
+@import "label.scss";
 
 *{
     margin: 0;
@@ -11,6 +11,8 @@
     box-sizing: border-box;
     font-family: 'Ubuntu';
 }
+
+
 
 main{
     min-height: 100vh;
