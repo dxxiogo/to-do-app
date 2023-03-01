@@ -14,10 +14,11 @@ function createIcon (src, event){
     return newImg;
 }
 
-function createHeader (color) {
+function createHeader (color, label) {
     const newHeader = document.createElement('header');
     newHeader.style.backgroundColor = color;
     const newLabel = document.createElement('label');
+    newLabel.textContent = label;
 
     const icons = createDiv('icons')
 
@@ -46,7 +47,7 @@ export default function createNewNote ({content, select, label, reference, color
 
     const newNote = createDiv('new-note');
     newNote.id = reference;
-    const newHeader = createHeader(color);
+    const newHeader = createHeader(color, label);
 
     const contentDiv = createDiv('content');
     const input = document.createElement('input');

@@ -1,3 +1,5 @@
+import { storeLabel } from "./storage.js";
+
 function addNewOptionToLabels (label) {
     const labelsOption = document.querySelector('#options');
     const newOption = document.createElement('option');
@@ -6,8 +8,10 @@ function addNewOptionToLabels (label) {
     labelsOption.append(newOption);
 }
 
-
 function createStructForLabel(content) {
+    storeLabel(content);
+    const taskList = [];
+    localStorage.setItem(`${content}`, JSON.stringify(taskList));
     const newLabel = document.createElement('div');
     newLabel.className = 'new-label';
     const contentLabel = document.createElement('p');

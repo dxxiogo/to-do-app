@@ -37,7 +37,10 @@ const colorsOption = {
 
 function getChangesTask () {
     const labelSelect = document.querySelector('#options').value;
-    const colorSelected = document.querySelector('.selected-color').id ?? colorsOption['dark-blue'];
+    let colorSelected = colorsOption['dark-blue'];
+    if( document.querySelector('.selected-color')){
+        colorSelected = document.querySelector('.selected-color').id 
+    } 
     const taskContent = document.querySelector('#task-content > input').value;
     return {
         label: labelSelect,
@@ -46,12 +49,43 @@ function getChangesTask () {
     }
 }
 
+function modifyTaskList (changes, currentTask, reference) {
+    const addedTasks = JSON.parse(localStorage.getItem(reference));
+    addedTasks.forEach((task) => {
+        if(task.reference === currentTask.id){
+            console.log('entrei')
+            task.content = changes.content;
+            task.label = changes.label;
+            task.color = colorsOption[changes.color];
+        }
+    });
+    localStorage.setItem(reference, JSON.stringify(addedTasks));
+}
+
+function addTaskToCorrespondingLabel (label, task) {
+    if(localStorage.getItem(label)){
+        const labelList = JSON.parse(localStorage.getItem(label));
+        const taskExists = labelList.find((currentTask) => {
+            return currentTask.reference === task.reference
+        })
+        if(!taskExists) {
+            labelList.push(task);
+        }
+        localStorage.setItem(label, JSON.stringify(labelList));
+    }
+}
+
 function saveEditChanges (task) {
     const taskChanges = getChangesTask();
+    modifyTaskList(taskChanges, task, 'added-tasks');
     const storageTask = JSON.parse(localStorage.getItem(task.id));
-    storageTask.label = taskChanges.label;
     storageTask.content = taskChanges.content;
     storageTask.color = colorsOption[taskChanges.color];
+    if(taskChanges.label !== 'Labels'){
+        storageTask.label = taskChanges.label;
+        modifyTaskList(taskChanges, task, storageTask.label);
+    }
+    addTaskToCorrespondingLabel(taskChanges.label, storageTask);
     localStorage.setItem(task.id, JSON.stringify(storageTask));
     const header = document.querySelector(`#${task.id} > header`);
     header.style.backgroundColor = colorsOption[taskChanges.color];

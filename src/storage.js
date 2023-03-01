@@ -30,4 +30,16 @@ function createReferenceToStorage (task) {
     return task;
 }
 
-export{createReferenceToStorage, storeTask};
+function storeLabel (label) {
+    if(localStorage.getItem('Labels')){
+        const labels = JSON.parse(localStorage.getItem('Labels'));
+        labels.push(label);
+        localStorage.setItem('Labels', JSON.stringify(labels));
+    } else {
+        const labelsList = [];
+        labelsList.push(label);
+        localStorage.setItem('Labels', JSON.stringify(labelsList));
+    }
+}
+
+export{createReferenceToStorage, storeTask, storeLabel};
