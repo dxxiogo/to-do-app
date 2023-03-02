@@ -1,8 +1,8 @@
 import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
-import {discardEditChanges, selectColor} from "./edit.js"
+import {discardEditChanges, saveEditChanges, selectColor, showResourcesToEditTask} from "./edit.js"
 import { listTasks} from "./task.js";
-import { addNewLabel, cancelNewLabel, showInputToNewLabel } from "./label.js";
+import { addNewLabel, cancelNewLabel, listLabelsCreated, showInputToNewLabel } from "./label.js";
 
 const btnAdd = document.querySelector('#add-task');
 btnAdd.addEventListener('click', () => {
@@ -20,6 +20,7 @@ btnAdd.addEventListener('click', () => {
 })
 
 window.addEventListener('load',listTasks)
+window.addEventListener('load', listLabelsCreated);
 
 const plusLabel = document.querySelector('#plus-label');
 plusLabel.addEventListener('click', showInputToNewLabel);
@@ -35,4 +36,11 @@ colors.forEach((color) => color.addEventListener('click', selectColor));
 
 const btnDiscardEditChanges = document.querySelector('#discard-changes-btn');
 
-btnDiscardEditChanges.addEventListener('click', discardEditChanges)
+btnDiscardEditChanges.addEventListener('click', discardEditChanges);
+
+const btnSaveChanges = document.querySelector('#save-changes-btn');
+btnSaveChanges.addEventListener('click', () => {
+    const currentTask = document.querySelector('#task-content > input').classList.value;
+    saveEditChanges(currentTask)
+});
+

@@ -1,11 +1,13 @@
+import { removeTaskFromLabel } from "./storage.js";
+
 function showResourcesToEditTask (eve) {
     const bgModalEdit = document.querySelector('#bg-modal-edit');
     bgModalEdit.style.display = 'flex';
-    const currentTask = eve.currentTarget.parentNode.parentNode.parentNode.parentNode;
+    const currentTask = eve.currentTarget.parentNode.parentNode.parentNode.parentNode
     const taskContentEdit = document.querySelector('#task-content > input');
+    taskContentEdit.className = `${currentTask.id}`
     taskContentEdit.value = document.querySelector(`#${currentTask.id} > .content > p`).textContent;
-    const btnSaveChanges = document.querySelector('#save-changes-btn');
-    btnSaveChanges.addEventListener('click', () => saveEditChanges(currentTask));
+    return currentTask;
 }
 
 
@@ -36,7 +38,7 @@ const colorsOption = {
 }
 
 function getChangesTask () {
-    const labelSelect = document.querySelector('#options').value;
+    const labelSelect = document.querySelector('#options').value ?? '';
     let colorSelected = colorsOption['dark-blue'];
     if( document.querySelector('.selected-color')){
         colorSelected = document.querySelector('.selected-color').id 
@@ -49,20 +51,23 @@ function getChangesTask () {
     }
 }
 
-function modifyTaskList (changes, currentTask, reference) {
-    const addedTasks = JSON.parse(localStorage.getItem(reference));
-    addedTasks.forEach((task) => {
-        if(task.reference === currentTask.id){
-            console.log('entrei')
-            task.content = changes.content;
-            task.label = changes.label;
-            task.color = colorsOption[changes.color];
-        }
-    });
-    localStorage.setItem(reference, JSON.stringify(addedTasks));
+
+
+function modifyTaskList (changes, currentTask) {
+    const addedTasks = JSON.parse(localStorage.getItem('added-tasks'));
+    const taskModify = addedTasks.find(task => task.reference === currentTask);
+    taskModify.content = changes.content;
+    taskModify.label = changes.label;
+    taskModify.color = colorsOption[changes.color];
+    localStorage.setItem('added-tasks', JSON.stringify(addedTasks));
 }
 
 function addTaskToCorrespondingLabel (label, task) {
+    const currentTask = JSON.parse(localStorage.getItem(task));
+    console.log(currentTask);
+    if(currentTask.label !== ''){
+        removeTaskFromLabel(currentTask.label, currentTask);
+    } 
     if(localStorage.getItem(label)){
         const labelList = JSON.parse(localStorage.getItem(label));
         const taskExists = labelList.find((currentTask) => {
@@ -77,25 +82,26 @@ function addTaskToCorrespondingLabel (label, task) {
 
 function saveEditChanges (task) {
     const taskChanges = getChangesTask();
-    modifyTaskList(taskChanges, task, 'added-tasks');
-    const storageTask = JSON.parse(localStorage.getItem(task.id));
+    modifyTaskList(taskChanges, task);
+    const storageTask = JSON.parse(localStorage.getItem(task));
     storageTask.content = taskChanges.content;
     storageTask.color = colorsOption[taskChanges.color];
-    if(taskChanges.label !== 'Labels'){
-        storageTask.label = taskChanges.label;
-        modifyTaskList(taskChanges, task, storageTask.label);
-    }
+    storageTask.label = taskChanges.label;
+    localStorage.setItem(task, JSON.stringify(storageTask));
+
     addTaskToCorrespondingLabel(taskChanges.label, storageTask);
-    localStorage.setItem(task.id, JSON.stringify(storageTask));
-    const header = document.querySelector(`#${task.id} > header`);
+
+    const header = document.querySelector(`#${task} > header`);
     header.style.backgroundColor = colorsOption[taskChanges.color];
-    if(taskChanges.label != 'Labels'){
-        const taskLabel = document.querySelector(`#${task.id} > header > label`);
-        taskLabel.textContent = taskChanges.label;
-    }
-    const taskContent = document.querySelector(`#${task.id} > .content > p`);
+
+    const taskLabel = document.querySelector(`#${task} > header > label`);
+    taskLabel.textContent = taskChanges.label;
+
+    const taskContent = document.querySelector(`#${task} > .content > p`);
     taskContent.textContent = taskChanges.content;
+    const taskContentEdit = document.querySelector('#task-content > input');
+    taskContentEdit.classList.remove(task);
     discardEditChanges();
 }
 
-export{selectColor, discardEditChanges, showResourcesToEditTask}
+export{selectColor, discardEditChanges, showResourcesToEditTask, saveEditChanges}

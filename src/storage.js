@@ -42,4 +42,12 @@ function storeLabel (label) {
     }
 }
 
-export{createReferenceToStorage, storeTask, storeLabel};
+function removeTaskFromLabel(currentTask, label){
+    const labelList = JSON.parse(localStorage.getItem(label));
+    labelList = labelList.filter((task) => {
+        return task.reference !== currentTask;
+    })
+    localStorage.setItem(`${label}`, labelList);
+}
+
+export{createReferenceToStorage, storeTask, storeLabel, removeTaskFromLabel};

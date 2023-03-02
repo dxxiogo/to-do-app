@@ -9,9 +9,6 @@ function addNewOptionToLabels (label) {
 }
 
 function createStructForLabel(content) {
-    storeLabel(content);
-    const taskList = [];
-    localStorage.setItem(`${content}`, JSON.stringify(taskList));
     const newLabel = document.createElement('div');
     newLabel.className = 'new-label';
     const contentLabel = document.createElement('p');
@@ -35,13 +32,21 @@ function hideInputToNewLabel () {
     btnShowInputToNewLabel.style.display = 'block'
 }
 
+function storeLabelList (label){
+    console.log(label)
+    const taskList = [];
+    localStorage.setItem(label, JSON.stringify(taskList));
+    storeLabel(label);
+}
+
 function addNewLabel () {
-     const newLabelInput = document.querySelector('#new-label-input');
+     const label = document.querySelector('#new-label-input').value;
      const labelsAdded = document.querySelector('#labels');
-     const createdNewLabel = createStructForLabel(newLabelInput.value);  
-     addNewOptionToLabels(newLabelInput.value);
+     const createdNewLabel = createStructForLabel(label);  
+     storeLabelList(label);
+     addNewOptionToLabels(label);
      labelsAdded.append(createdNewLabel);
-     newLabelInput.value = ''
+     document.querySelector('#new-label-input').value = '';
      hideInputToNewLabel();
 };
 
@@ -53,4 +58,15 @@ function cancelNewLabel () {
     btnShowInputToNewLabel.style.display = 'block'
 };
 
-export{showInputToNewLabel, addNewLabel, cancelNewLabel}
+function listLabelsCreated () {
+    if(localStorage.getItem('Labels')){
+        const labelsAdded = document.querySelector('#labels');
+        const labelsCreated = JSON.parse(localStorage.getItem('Labels'));
+        labelsCreated.forEach((label) => {
+            labelsAdded.append(createStructForLabel(label));
+            addNewOptionToLabels(label);
+        });
+    }
+}
+
+export{showInputToNewLabel, addNewLabel, cancelNewLabel, listLabelsCreated}
