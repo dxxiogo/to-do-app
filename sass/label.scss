@@ -2,11 +2,12 @@
     max-width: 470px;
     min-height: 50px;
     display: flex;
-    padding: 5px;
     flex-wrap: wrap;
     div{
         display: flex;
         align-items: center;
+        max-width: 470px;
+        flex-wrap: wrap;
         gap: 8px;
         #all-notes, .new-label{
             min-width: 95px;

@@ -3,6 +3,7 @@
 @import "main.scss";
 @import "note.scss";
 @import "label.scss";
+@import "responsive.scss";
 
 *{
     margin: 0;
@@ -15,5 +16,5 @@
 
 
 main{
-    min-height: 100vh;
+    min-height: 110vh;
 }

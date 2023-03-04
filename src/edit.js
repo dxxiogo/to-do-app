@@ -54,12 +54,17 @@ function getChangesTask () {
 
 
 function modifyTaskList (changes, currentTask, list) {
+    console.log(`modify: ${currentTask}, ${list}`)
     const addedTasks = JSON.parse(localStorage.getItem(list));
-    const taskModify = addedTasks.find(task => task.reference === currentTask);
-    taskModify.content = changes.content;
-    taskModify.label = changes.label;
-    taskModify.color = colorsOption[changes.color];
-    localStorage.setItem(list, JSON.stringify(addedTasks));
+    if(addedTasks !== null){
+        const taskModify = addedTasks.find(task => task.reference === currentTask);
+        if(taskModify !== null){
+            taskModify.content = changes.content;
+            taskModify.label = changes.label;
+            taskModify.color = colorsOption[changes.color];
+        }
+        localStorage.setItem(list, JSON.stringify(addedTasks));
+    }
 }
 
 function addTaskToCorrespondingLabel (label, task) {

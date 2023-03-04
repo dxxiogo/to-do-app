@@ -5,11 +5,18 @@ body {
 }
 
 main {
-  width: 650px;
-  height: 300px;
-  padding: 80px;
+  max-width: 700px;
+  min-height: 300px;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-main div > h1 {
+main #major-title {
+  width: 450px;
+}
+main #title {
+  text-align: left;
   font-size: 60px;
   margin-bottom: 30px;
 }
@@ -38,49 +45,6 @@ main #form-task form #major-info button {
   border-color: #bdbdbd;
   border: none;
 }
-main #form-task #labels-area {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}
-main #form-task #labels-area div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-main #form-task #labels-area div .new-label {
-  background: none;
-  color: #bdbdbd;
-}
-main #form-task #labels-area div #plus button {
-  height: 30px;
-  width: 50px;
-  color: #bdbdbd;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-main #form-task #labels-area div #plus #new-label {
-  display: none;
-}
-main #form-task #labels-area div #plus #new-label #new-label-input {
-  border: 1.5px solid #bdbdbd;
-  outline: none;
-  height: 30px;
-  padding: 8px;
-  border-radius: 15px;
-  width: 120px;
-  font-size: 16px;
-}
-main #form-task #labels-area div #plus img {
-  height: 30px;
-  cursor: pointer;
-}
-main #form-task #labels-area div #plus img:hover {
-  height: 25px;
-}
 
 #added-tasks {
   min-height: 200px;
@@ -95,7 +59,7 @@ main #form-task #labels-area div #plus img:hover {
   justify-content: space-between;
   border: 1px solid black;
   height: 40px;
-  width: 450px;
+  max-width: 450px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
@@ -125,6 +89,7 @@ main #form-task #labels-area div #plus img:hover {
 }
 #added-tasks .new-note div.content {
   padding: 10px;
+  max-width: 450px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -141,6 +106,7 @@ main #form-task #labels-area div #plus img:hover {
   min-height: 100vh;
   width: 100%;
   display: flex;
+  padding: 10px;
   align-items: center;
   justify-content: center;
   display: none;
@@ -242,12 +208,13 @@ main #form-task #labels-area div #plus img:hover {
   max-width: 470px;
   min-height: 50px;
   display: flex;
-  padding: 5px;
   flex-wrap: wrap;
 }
 #labels-area div {
   display: flex;
   align-items: center;
+  max-width: 470px;
+  flex-wrap: wrap;
   gap: 8px;
 }
 #labels-area div #all-notes, #labels-area div .new-label {
@@ -300,6 +267,86 @@ main #form-task #labels-area div #plus img:hover {
   color: #fff !important;
 }
 
+@media (max-width: 470px) {
+  main {
+    padding: 0px;
+  }
+  main #major-title {
+    width: 330px;
+    margin-top: 70px;
+  }
+  main #major-title h1#title {
+    font-size: 40px;
+  }
+  main #form-task {
+    justify-content: center;
+  }
+  main #form-task form #major-info input {
+    width: 280px;
+  }
+  main #form-task form #major-info button {
+    width: 80px;
+    font-size: 16px;
+  }
+  main #labels-area {
+    grid-template-columns: 1fr 1fr;
+  }
+  #added-tasks .new-note header {
+    max-width: 350px;
+  }
+  #added-tasks .new-note div.content {
+    max-width: 350px;
+  }
+  #modal-edit-task {
+    max-width: 380px;
+  }
+  #task-content > input {
+    max-width: 320px;
+  }
+}
+@media (max-width: 380px) {
+  main {
+    padding: 10px;
+  }
+  main #major-title {
+    width: 300px;
+    margin-top: 70px;
+  }
+  main #form-task {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  main #form-task form #major-info input {
+    width: 250px;
+  }
+  main #form-task form #major-info button {
+    width: 60px;
+  }
+  main #labels-area {
+    grid-template-columns: 1fr 1fr;
+  }
+  #added-tasks .new-note header {
+    max-width: 320px;
+  }
+  #added-tasks .new-note div.content {
+    max-width: 320px;
+  }
+  #labels-area div #all-notes, #labels-area div .new-label {
+    min-width: 85px;
+  }
+  #modal-edit-task {
+    max-width: 330px;
+  }
+  #task-content > input {
+    max-width: 280px;
+    font-size: 16px;
+  }
+  #options {
+    width: 120px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -309,7 +356,7 @@ main #form-task #labels-area div #plus img:hover {
 }
 
 main {
-  min-height: 100vh;
+  min-height: 110vh;
 }
 
 /*# sourceMappingURL=style.css.map */

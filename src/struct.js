@@ -62,6 +62,9 @@ export default function createNewNote ({content, select, label, reference, color
     const contentDiv = createDiv('content');
     
     const taskContent = document.createElement('p');
+    if(select){
+        taskContent.classList.add('completed-task')
+    }
     taskContent.innerText = content;
     const newInput = createInputCheck(select, label, reference, taskContent);
 

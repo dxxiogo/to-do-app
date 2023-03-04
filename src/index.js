@@ -1,6 +1,6 @@
 import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
-import {discardEditChanges, saveEditChanges, selectColor, showResourcesToEditTask} from "./edit.js"
+import {discardEditChanges, saveEditChanges, selectColor} from "./edit.js"
 import { listTasks} from "./task.js";
 import { addNewLabel, cancelNewLabel, listLabelsCreated, loadAllTasks, showInputToNewLabel } from "./label.js";
 
