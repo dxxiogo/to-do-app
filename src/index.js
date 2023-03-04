@@ -2,7 +2,7 @@ import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
 import {discardEditChanges, saveEditChanges, selectColor, showResourcesToEditTask} from "./edit.js"
 import { listTasks} from "./task.js";
-import { addNewLabel, cancelNewLabel, listLabelsCreated, showInputToNewLabel } from "./label.js";
+import { addNewLabel, cancelNewLabel, listLabelsCreated, loadAllTasks, showInputToNewLabel } from "./label.js";
 
 const btnAdd = document.querySelector('#add-task');
 btnAdd.addEventListener('click', () => {
@@ -43,4 +43,7 @@ btnSaveChanges.addEventListener('click', () => {
     const currentTask = document.querySelector('#task-content > input').classList.value;
     saveEditChanges(currentTask)
 });
+
+const labelAll = document.querySelector('#all-notes');
+labelAll.addEventListener('click', loadAllTasks)
 

@@ -1,4 +1,4 @@
-import { removeTask} from "./task.js";
+import { completeTask, modifySelectFromTask, removeTask} from "./task.js";
 import { showResourcesToEditTask } from "./edit.js";
 
 function createDiv(className){
@@ -37,6 +37,16 @@ function createHeader (color, label) {
     return newHeader;
 }
 
+function createInputCheck (select, label, reference, content) {
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    if(select){
+        input.checked = 'true'
+    }
+    completeTask(input, reference, label, content);
+    return input;
+}
+
 export default function createNewNote ({content, select, label, reference, color}) {
     const main = document.querySelector('main');
     const notesAdded = document.querySelector('#added-tasks');
@@ -50,13 +60,12 @@ export default function createNewNote ({content, select, label, reference, color
     const newHeader = createHeader(color, label);
 
     const contentDiv = createDiv('content');
-    const input = document.createElement('input');
-    input.type = 'checkbox';
-
+    
     const taskContent = document.createElement('p');
     taskContent.innerText = content;
+    const newInput = createInputCheck(select, label, reference, taskContent);
 
-    contentDiv.append(input, taskContent);
+    contentDiv.append(newInput, taskContent);
     newNote.append(newHeader, contentDiv);
     notesAdded.append(newNote);
 }

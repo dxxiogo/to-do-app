@@ -47,19 +47,6 @@ main{
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                #all-notes, .new-label{
-                    min-width: 95px;
-                    height: 30px;
-                    display: flex;
-                    padding: 5px;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 15px;
-                    border: 1.5px solid $label-color;
-                    cursor: pointer;
-                    background-color: $major-color;
-                    color: #fff;
-                }
                 .new-label {
                     background:none;
                     color: $label-color;

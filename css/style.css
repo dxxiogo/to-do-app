@@ -49,19 +49,6 @@ main #form-task #labels-area div {
   align-items: center;
   gap: 8px;
 }
-main #form-task #labels-area div #all-notes, main #form-task #labels-area div .new-label {
-  min-width: 95px;
-  height: 30px;
-  display: flex;
-  padding: 5px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  border: 1.5px solid #bdbdbd;
-  cursor: pointer;
-  background-color: #9c27b0;
-  color: #fff;
-}
 main #form-task #labels-area div .new-label {
   background: none;
   color: #bdbdbd;
@@ -246,6 +233,11 @@ main #form-task #labels-area div #plus img:hover {
   border: 1px solid black !important;
 }
 
+.completed-task {
+  text-decoration: line-through !important;
+  color: #bdbdbd !important;
+}
+
 #labels-area {
   max-width: 470px;
   min-height: 50px;
@@ -268,8 +260,7 @@ main #form-task #labels-area div #plus img:hover {
   border-radius: 15px;
   border: 1.5px solid #bdbdbd;
   cursor: pointer;
-  background-color: #9c27b0;
-  color: #fff;
+  color: #bdbdbd;
 }
 #labels-area div .new-label {
   background: none;
@@ -302,6 +293,11 @@ main #form-task #labels-area div #plus img:hover {
 }
 #labels-area div #plus img:hover {
   height: 25px;
+}
+
+.selected-label {
+  background-color: #9c27b0 !important;
+  color: #fff !important;
 }
 
 * {

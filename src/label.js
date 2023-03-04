@@ -1,4 +1,6 @@
 import { storeLabel } from "./storage.js";
+import createNewNote from "./struct.js";
+import { listTasks} from "./task.js";
 
 function addNewOptionToLabels (label) {
     const labelsOption = document.querySelector('#options');
@@ -12,6 +14,9 @@ function createStructForLabel(content) {
     const newLabel = document.createElement('div');
     newLabel.className = 'new-label';
     const contentLabel = document.createElement('p');
+    newLabel.addEventListener('click', () => {
+        selectLabel(newLabel);
+    })
     contentLabel.textContent = content;
     newLabel.append(contentLabel);
     content = '';
@@ -69,4 +74,47 @@ function listLabelsCreated () {
     }
 }
 
-export{showInputToNewLabel, addNewLabel, cancelNewLabel, listLabelsCreated}
+function resetLabels () {
+    const labels = document.querySelectorAll('.new-label');
+    labels.forEach((label) => {
+        label.classList.remove('selected-label');
+    })
+}
+
+function cleanTask() {
+    const addedTasks = document.querySelector('#added-tasks');
+    addedTasks.innerText = ''
+}
+
+function selectLabel (label) {
+    resetLabels();
+    label.classList.add('selected-label')
+    cleanTask();
+    const taskList = JSON.parse(localStorage.getItem('added-tasks'));
+    const thereIs = taskList.some(task => task.label === label.textContent);
+    if(thereIs){
+        taskList.forEach((task) => {
+            if(task.label === label.textContent){
+                createNewNote(task);
+            }
+        })
+    } else {
+        const addedTasks = document.querySelector('#added-tasks');
+        addedTasks.innerText = 'No tasks yet'
+    }
+
+}
+
+function loadAllTasks (eve) {
+    resetLabels();
+    const label = eve.currentTarget;
+    label.classList.add('selected-label');
+    cleanTask()
+    listTasks();
+}
+
+function loadTasksCorrespondingToLabel (label) {
+    
+}
+
+export{showInputToNewLabel, addNewLabel, cancelNewLabel, listLabelsCreated, loadAllTasks}

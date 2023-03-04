@@ -3,7 +3,6 @@ function storeTask (task) {
         const taskAdedd = JSON.parse(localStorage.getItem(`${task.reference}`)) 
     } else {
         localStorage.setItem(task.reference, JSON.stringify(task));
-        console.log(task.reference)
         if(localStorage.getItem('added-tasks')){
             const addedTasks = JSON.parse(localStorage.getItem('added-tasks'));
             addedTasks.push(task)
@@ -42,12 +41,14 @@ function storeLabel (label) {
     }
 }
 
-function removeTaskFromLabel(currentTask, label){
-    const labelList = JSON.parse(localStorage.getItem(label));
-    labelList = labelList.filter((task) => {
-        return task.reference !== currentTask;
-    })
-    localStorage.setItem(`${label}`, labelList);
+function removeTaskFromLabel(reference, label){
+    if(label !== ''){
+        let labelList = JSON.parse(localStorage.getItem(label));
+        labelList = labelList.filter((task) => {
+            return task.reference !== reference;
+        })
+        localStorage.setItem(`${label}`, JSON.stringify(labelList));
+    }
 }
 
 export{createReferenceToStorage, storeTask, storeLabel, removeTaskFromLabel};

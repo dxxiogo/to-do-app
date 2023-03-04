@@ -53,21 +53,16 @@ function getChangesTask () {
 
 
 
-function modifyTaskList (changes, currentTask) {
-    const addedTasks = JSON.parse(localStorage.getItem('added-tasks'));
+function modifyTaskList (changes, currentTask, list) {
+    const addedTasks = JSON.parse(localStorage.getItem(list));
     const taskModify = addedTasks.find(task => task.reference === currentTask);
     taskModify.content = changes.content;
     taskModify.label = changes.label;
     taskModify.color = colorsOption[changes.color];
-    localStorage.setItem('added-tasks', JSON.stringify(addedTasks));
+    localStorage.setItem(list, JSON.stringify(addedTasks));
 }
 
 function addTaskToCorrespondingLabel (label, task) {
-    const currentTask = JSON.parse(localStorage.getItem(task));
-    console.log(currentTask);
-    if(currentTask.label !== ''){
-        removeTaskFromLabel(currentTask.label, currentTask);
-    } 
     if(localStorage.getItem(label)){
         const labelList = JSON.parse(localStorage.getItem(label));
         const taskExists = labelList.find((currentTask) => {
@@ -82,14 +77,20 @@ function addTaskToCorrespondingLabel (label, task) {
 
 function saveEditChanges (task) {
     const taskChanges = getChangesTask();
-    modifyTaskList(taskChanges, task);
+    modifyTaskList(taskChanges, task, 'added-tasks');
     const storageTask = JSON.parse(localStorage.getItem(task));
+    const currentLabel = storageTask.label;
+    if(currentLabel !== taskChanges.label && taskChanges !== '' && currentLabel !== '' ){
+        removeTaskFromLabel(storageTask.reference, currentLabel);
+    }
     storageTask.content = taskChanges.content;
     storageTask.color = colorsOption[taskChanges.color];
     storageTask.label = taskChanges.label;
+    
     localStorage.setItem(task, JSON.stringify(storageTask));
-
+    
     addTaskToCorrespondingLabel(taskChanges.label, storageTask);
+    modifyTaskList(taskChanges, task, taskChanges.label);
 
     const header = document.querySelector(`#${task} > header`);
     header.style.backgroundColor = colorsOption[taskChanges.color];
