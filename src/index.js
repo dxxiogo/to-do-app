@@ -1,8 +1,9 @@
 import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
-import {discardEditChanges, saveEditChanges, selectColor} from "./edit.js"
+import {addTaskToCorrespondingLabel, discardEditChanges, saveEditChanges, selectColor} from "./edit.js"
 import { listTasks} from "./task.js";
 import { addNewLabel, cancelNewLabel, listLabelsCreated, loadAllTasks, showInputToNewLabel } from "./label.js";
+
 
 const btnAdd = document.querySelector('#add-task');
 btnAdd.addEventListener('click', () => {
@@ -13,8 +14,18 @@ btnAdd.addEventListener('click', () => {
         select: false,
         color: '#9c27b0'
     }
+    createReferenceToStorage(task)
+    const labelSelect = document.querySelector('.selected-label > p').textContent;
+    if(labelSelect != 'All') {
+        task.label = labelSelect;
+        addTaskToCorrespondingLabel(labelSelect, task)
+        const addedTasks = document.querySelector('#added-tasks');
+        if(addedTasks.textContent === 'No tasks yet'){
+            addedTasks.textContent = '';
+        }
+    }
+    createNewNote(task);
     
-    createNewNote(createReferenceToStorage(task));
     storeTask(task);
     taskInput.value = '';
 })

@@ -38,7 +38,6 @@ function hideInputToNewLabel () {
 }
 
 function storeLabelList (label){
-    console.log(label)
     const taskList = [];
     localStorage.setItem(label, JSON.stringify(taskList));
     storeLabel(label);
@@ -89,18 +88,24 @@ function cleanTask() {
 function selectLabel (label) {
     resetLabels();
     label.classList.add('selected-label')
-    cleanTask();
-    const taskList = JSON.parse(localStorage.getItem('added-tasks'));
-    const thereIs = taskList.some(task => task.label === label.textContent);
-    if(thereIs){
-        taskList.forEach((task) => {
-            if(task.label === label.textContent){
-                createNewNote(task);
-            }
-        })
+    if(localStorage.getItem('added-tasks')){
+        const taskList = JSON.parse(localStorage.getItem('added-tasks'));
+        const thereIs = taskList.some(task => task.label === label.textContent);
+        if(thereIs){
+            cleanTask();
+            taskList.forEach((task) => {
+                if(task.label === label.textContent){
+                    createNewNote(task);
+                }
+            })
+        } else {
+            const addedTasks = document.querySelector('#added-tasks');
+            addedTasks.textContent = 'No tasks yet'
+        }
+        
     } else {
         const addedTasks = document.querySelector('#added-tasks');
-        addedTasks.innerText = 'No tasks yet'
+        addedTasks.textContent = 'No tasks yet'
     }
 
 }

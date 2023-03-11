@@ -48,7 +48,6 @@ function createInputCheck (select, label, reference, content) {
 }
 
 export default function createNewNote ({content, select, label, reference, color}) {
-    const main = document.querySelector('main');
     const notesAdded = document.querySelector('#added-tasks');
     const p = document.querySelector('#added-tasks > p');
     if(p){

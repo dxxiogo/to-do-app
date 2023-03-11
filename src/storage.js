@@ -26,7 +26,6 @@ function createReferenceToStorage (task) {
         task.reference = `task-${amountTasks}`;
         localStorage.setItem('amount-tasks', JSON.stringify(amountTasks));
     }
-    return task;
 }
 
 function storeLabel (label) {

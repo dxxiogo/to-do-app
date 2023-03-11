@@ -54,7 +54,6 @@ function getChangesTask () {
 
 
 function modifyTaskList (changes, currentTask, list) {
-    console.log(`modify: ${currentTask}, ${list}`)
     const addedTasks = JSON.parse(localStorage.getItem(list));
     if(addedTasks !== null){
         const taskModify = addedTasks.find(task => task.reference === currentTask);
@@ -110,4 +109,4 @@ function saveEditChanges (task) {
     discardEditChanges();
 }
 
-export{selectColor, discardEditChanges, showResourcesToEditTask, saveEditChanges}
+export{selectColor, discardEditChanges, showResourcesToEditTask, saveEditChanges, addTaskToCorrespondingLabel}
