@@ -2,7 +2,9 @@ import { removeTaskFromLabel } from "./storage.js";
 
 function showResourcesToEditTask (eve) {
     const bgModalEdit = document.querySelector('#bg-modal-edit');
+    const modalEditTask = document.querySelector('#modal-edit-task');
     bgModalEdit.style.display = 'flex';
+    modalEditTask.style.display = 'block';
     const currentTask = eve.currentTarget.parentNode.parentNode.parentNode.parentNode
     const taskContentEdit = document.querySelector('#task-content > input');
     taskContentEdit.className = `${currentTask.id}`

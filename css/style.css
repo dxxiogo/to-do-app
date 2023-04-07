@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap");
 body {
   display: flex;
+  height: 100vh;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 700px;
   min-height: 300px;
   padding-top: 80px;
@@ -12,13 +18,30 @@ main {
   flex-direction: column;
   align-items: center;
 }
-main #major-title {
-  width: 450px;
+main header {
+  width: 100%;
+  padding: 10px;
 }
-main #title {
-  text-align: left;
+main header #title {
   font-size: 60px;
-  margin-bottom: 30px;
+}
+main header button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #9c27b0;
+  background: none;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px;
+  transition: 1s;
+}
+main header button img {
+  height: 35px;
+}
+main header button:hover {
+  background-color: #9c27b0;
+  color: white;
 }
 main #form-task form #major-info {
   display: flex;
@@ -106,7 +129,6 @@ main #form-task form #major-info button {
   min-height: 100vh;
   width: 100%;
   display: flex;
-  padding: 10px;
   align-items: center;
   justify-content: center;
   display: none;
@@ -119,6 +141,7 @@ main #form-task form #major-info button {
   width: 450px;
   box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.364);
   padding: 30px;
+  display: none;
 }
 
 #task-content > input {
