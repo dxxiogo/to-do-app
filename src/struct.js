@@ -1,5 +1,6 @@
 import { completeTask, modifySelectFromTask, removeTask} from "./task.js";
 import { showResourcesToEditTask } from "./edit.js";
+import "../dist/icon";
 
 function createDiv(className){
     const div = document.createElement('div')
