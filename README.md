@@ -14,4 +14,3 @@ Aplicação de lista de tarefas construída com Javascript, HTML e Sass. Projeto
 * Compatibilidade com Babel
 * Uso do Npm para instalação de pacotes
 
-DEPLOY: <a href="./dist/index.html">Clique aqui!</a>
