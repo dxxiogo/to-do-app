@@ -1,3 +1,4 @@
+import '../css/style.css';
 import createNewNote from "./struct.js";
 import { createReferenceToStorage, storeTask } from "./storage.js";
 import {addTaskToCorrespondingLabel, discardEditChanges, saveEditChanges, selectColor} from "./edit.js"
