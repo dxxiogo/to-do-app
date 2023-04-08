@@ -1,6 +1,6 @@
 import { completeTask, modifySelectFromTask, removeTask} from "./task.js";
 import { showResourcesToEditTask } from "./edit.js";
-import "../dist/icon";
+
 
 function createDiv(className){
     const div = document.createElement('div')
@@ -24,12 +24,12 @@ function createHeader (color, label) {
     const icons = createDiv('icons')
 
     const labelEdit = createDiv('label-edit edit-option');
-    const labelIcon = createIcon("../dist/icon/pincel.png");
+    const labelIcon = createIcon("icon/pincel.png");
     labelIcon.addEventListener('click', showResourcesToEditTask);
     labelEdit.append(labelIcon);
 
     const trashNote = createDiv('trash-note edit-option');
-    const trashIcon = createIcon("../dist/icon/trash.png", removeTask);
+    const trashIcon = createIcon("icon/trash.png", removeTask);
     trashNote.append(trashIcon);
 
     icons.append(labelEdit, trashNote);    
