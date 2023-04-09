@@ -24,12 +24,12 @@ function createHeader (color, label) {
     const icons = createDiv('icons')
 
     const labelEdit = createDiv('label-edit edit-option');
-    const labelIcon = createIcon("icon/pincel.png");
+    const labelIcon = createIcon("../public/pincel.png");
     labelIcon.addEventListener('click', showResourcesToEditTask);
     labelEdit.append(labelIcon);
 
     const trashNote = createDiv('trash-note edit-option');
-    const trashIcon = createIcon("icon/trash.png", removeTask);
+    const trashIcon = createIcon("../public/trash.png", removeTask);
     trashNote.append(trashIcon);
 
     icons.append(labelEdit, trashNote);    
