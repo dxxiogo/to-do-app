@@ -1,14 +1,11 @@
 <div align="center">
-  <img src="project_banner_todo.png" alt="To-Do List App" width="500"/>
-
+  
   # To-Do List App
 
   A web application for managing your tasks and to-dos efficiently. You can add, update, mark as complete, edit content and color, and delete tasks. The created tasks are stored in local storage. Additionally, you can create labels for tasks and filter tasks based on these labels.
 
-  [Demo](https://your-todo-app-demo.com)
-
-    <div align="center">
-  <img src="/public/tela-desktop.png" alt="Desktop Screenshot" width="660"/>
+<div align="center">
+  <img src="/public/tela-desktop.png" alt="Desktop Screenshot" width="700"/>
   <img src="/public/tela-mobile.png" alt="Mobile Screenshot" width="200"/>
 </div>
 
@@ -34,12 +31,6 @@
 1. Clone this repository.
 2. Navigate to the project directory in your terminal.
 3. Run `npm install` to install dependencies.
-4. Run `npm run dev` to start the development server.
-5. Access `http://localhost:8080` in your browser.
-
-## Deployment
-
-The project is deployed and accessible at [https://your-todo-app-demo.com](https://your-todo-app-demo.com).
 
 ## Contribution
 
