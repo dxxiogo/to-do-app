@@ -7,7 +7,11 @@
 
   [Demo](https://your-todo-app-demo.com)
 
-  ![Preview](project_preview_todo.png)
+    <div align="center">
+  <img src="/public/tela-desktop.png" alt="Desktop Screenshot" width="660"/>
+  <img src="/public/tela-mobile.png" alt="Mobile Screenshot" width="200"/>
+</div>
+
 </div>
 
 ## Features
